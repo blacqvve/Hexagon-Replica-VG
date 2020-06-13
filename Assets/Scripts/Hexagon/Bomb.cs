@@ -13,10 +13,6 @@ public class Bomb : Hexagon
      private Text text;
 
 
-     private Material material;
-     private float dissolveAmount;
-     private float dissolveSpeed;
-     private bool isDissolving;
      private void Awake()
      {
           gridManager = GridManager.Instance;
@@ -24,25 +20,10 @@ public class Bomb : Hexagon
      }
      private void OnEnable()
      {
-          material = GetComponent<SpriteRenderer>().material;
           gridManager = GridManager.Instance;
           timer = HexMetrics.BOMB_TIMER;
           text.text = timer.ToString();
           gridManager.BombTick += HandleTimer;
-     }
-
-     private void Update()
-     {
-          if (isDissolving)
-          {
-               dissolveAmount = Mathf.Clamp01(dissolveAmount + dissolveSpeed * Time.deltaTime);
-               material.SetFloat("_DissolveAmount", dissolveAmount);
-          }
-          else
-          {
-               dissolveAmount = Mathf.Clamp01(dissolveAmount - dissolveSpeed * Time.deltaTime);
-               material.SetFloat("_DissolveAmount", dissolveAmount);
-          }
      }
      private void HandleTimer()
      {
