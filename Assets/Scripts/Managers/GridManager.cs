@@ -18,7 +18,8 @@ public class GridManager : Singleton<GridManager>
 
      public Action<int> OnPlayerScore;
      public Action OnMoveMade;
-     public Action<SoundTypes> PlaySound; 
+     public Action<SoundTypes> PlaySound;
+     public Action BombTick;
      #endregion
 
 
@@ -224,6 +225,10 @@ public class GridManager : Singleton<GridManager>
                OnPlayerScore?.Invoke(HexMetrics.SCORE_MULTIPLIER * matchList.Count);
                foreach (var item in matchList)
                {
+                    if (item.GetType()!=typeof(Bomb))
+                    {
+                         BombTick?.Invoke();
+                    }
                     //Removing every hex from game logic
                     RemoveHexFromGame(item);
 

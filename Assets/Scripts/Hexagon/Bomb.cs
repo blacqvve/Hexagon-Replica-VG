@@ -20,7 +20,7 @@ public class Bomb : Hexagon
           gridManager = GridManager.Instance;
           timer = HexMetrics.BOMB_TIMER;
           text.text = timer.ToString();
-          gridManager.OnMoveMade += HandleTimer;
+          gridManager.BombTick += HandleTimer;
      }
      private void HandleTimer()
      {
@@ -35,7 +35,7 @@ public class Bomb : Hexagon
 
      private void OnDisable()
      {
-          gridManager.OnMoveMade -= HandleTimer;
+          gridManager.BombTick -= HandleTimer;
           gridManager = null;
      }
 
