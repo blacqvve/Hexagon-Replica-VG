@@ -168,7 +168,6 @@ public class Hexagon : MonoBehaviour
      {
           GetComponent<SpriteRenderer>().color = c; color = c;
      }
-
      private void OnDisable()
      {
           name = "PooledObject";

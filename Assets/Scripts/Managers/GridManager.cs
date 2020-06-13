@@ -10,7 +10,9 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GridManager : Singleton<GridManager>
 {
+     [Range(5,11)]
      public int gridWidth;
+     [Range(5, 13)]
      public int gridHeight;
 
      //Actions for listeners

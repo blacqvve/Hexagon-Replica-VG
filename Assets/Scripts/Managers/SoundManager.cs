@@ -34,8 +34,4 @@ public class SoundManager : MonoBehaviour
                audioSource.PlayOneShot(clip);
           }
      }
-     private void OnDestroy()
-     {
-          GridManager.Instance.PlaySound -= PlayClip;
-     }
 }
